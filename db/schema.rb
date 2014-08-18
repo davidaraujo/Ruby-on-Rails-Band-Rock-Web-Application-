@@ -11,7 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131024072046) do
+ActiveRecord::Schema.define(version: 20131024075218) do
+
+  create_table "band_profiles", force: true do |t|
+    t.string   "name"
+    t.text     "info"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "soundcloud"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gigs", force: true do |t|
+    t.string   "title"
+    t.date     "date"
+    t.time     "start_time"
+    t.time     "finish_time"
+    t.string   "location"
+    t.string   "street_address"
+    t.string   "suburb"
+    t.string   "tickets_url"
+    t.integer  "band_profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gigs", ["band_profile_id"], name: "index_gigs_on_band_profile_id"
+
+  create_table "photos", force: true do |t|
+    t.string   "image"
+    t.string   "caption"
+    t.integer  "band_profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "photos", ["band_profile_id"], name: "index_photos_on_band_profile_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"

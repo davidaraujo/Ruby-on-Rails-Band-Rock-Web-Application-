@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @band_profile.name %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @band_profile.info %>
+</p>
+
+<p>
+  <strong>Facebook:</strong>
+  <%= @band_profile.facebook %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @band_profile.twitter %>
+</p>
+
+<p>
+  <strong>Soundcloud:</strong>
+  <%= @band_profile.soundcloud %>
+</p>
+
+<hr>
+<hr2><%= @band_profile.name %>'s Gigs </h2>
+<% @band_profile.gigs.each do |gig| %>
+    <p><%= gig.title %></p>
+    <p><%= gig.date %></p>
+    <hr>
+<% end%> 
+
+<% if @band_profile.photos%>
+<%= image_tag @band_profile.photos.first.image, class: 'img-rounded' %>
+<% end %>
+    
+<%= link_to 'Edit', edit_band_profile_path(@band_profile) %> |
+<%= link_to 'Back', band_profiles_path %>
